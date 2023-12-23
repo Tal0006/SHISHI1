@@ -1,0 +1,18 @@
+<input #inpName type="text" placeholder="שם">
+    <input #inpStars type="number" placeholder="כוכבים">
+    <button (click)="addPlayer(inpName.value, +inpStars.value)" type="button">הוסף</button>
+
+    <button (click)="showTeams()">Players Data</button>
+    <button (click)="shuffleAgain()">ערבב</button>
+    <div *ngIf="!showTeamsComp && full20">
+        <tr *ngFor="let player of groupPlayersByStars(players)">
+            בחירה {{player[0].stars}}
+            <th style="border: 2px solid red;" *ngFor="let p of player">
+                <app-players-by-level [player]="p"></app-players-by-level>
+            </th>
+        </tr>
+    </div>
+
+    <div *ngIf="showTeamsComp">
+        <app-teams [teams]="teams"></app-teams>
+    </div>
