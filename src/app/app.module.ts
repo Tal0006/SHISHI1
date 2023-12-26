@@ -6,6 +6,9 @@ import { HomeComponent } from './comps/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TeamsComponent } from './comps/teams/teams.component';
 import { PlayersByLevelComponent } from './comps/players-by-level/players-by-level.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PlayerService } from './services/player.service';
+import { TeamService } from './services/team.service'
 
 @NgModule({
   declarations: [
@@ -16,9 +19,13 @@ import { PlayersByLevelComponent } from './comps/players-by-level/players-by-lev
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PlayerService,
+    TeamService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

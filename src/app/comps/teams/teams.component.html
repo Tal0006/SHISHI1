@@ -1,1 +1,8 @@
-<p>teams works!</p>
+<div *ngFor="let team of teams; let i = index" class="team">
+    <h2>Team {{ i + 1 }}</h2>
+    <ul>
+      <li *ngFor="let player of team.playersArray">
+        {{ player.name }}
+      </li>
+    </ul>
+  </div>
