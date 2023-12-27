@@ -1,5 +1,27 @@
-<div style="direction: rtl;">
-  <span>שם: {{player.name}}</span>
-  <span> || </span>
-  <span>רמה: {{player.stars}}</span>
-</div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Table Style</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta
+      name="viewport"
+      content="initial-scale=1.0; maximum-scale=1.0; width=device-width;"
+    />
+  </head>
+
+  <body>
+    <div class="table-title">
+      <h3>רמה : {{ players[0].stars }}</h3>
+    </div>
+    <table class="table-fill">
+      <tbody class="table-hover">
+        <tr style="border: 3px solid black;" *ngFor="let player of players">
+          <td>
+            <mat-icon (click)="deletePlayer(player.name)"  class="delete-icon">delete</mat-icon>
+            <span class="name-span">{{ player.name }} </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

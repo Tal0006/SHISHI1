@@ -1,71 +1,93 @@
 /* Styling for input and button elements */
-input, button {
-    margin: 5px;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Styling for the player data table */
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  th {
-    background-color: #f8f8f8;
-  }
-  
-  /* Styling for the Teams component */
-  .app-teams {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .team {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f8f8f8;
-  }
-  
-  h2 {
-    color: #333;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin: 5px 0;
-    padding: 8px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Optional: Hover effect on list items */
-  li:hover {
-    background-color: #f0f0f0;
-  }
+input,
+button {
+  margin: 5px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the player data table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+/* Styling for the Teams component */
+.app-teams {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.team {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+}
+
+h2 {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Hover effect on list items */
+li:hover {
+  background-color: #f0f0f0;
+}
+
+.levelPlayers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.levelPlayers2 {
+  width: 380px;
+  height: 800px;
+}
+
+.teams {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teams2 {
+  width: 479px;
+  height: 800px;
+}

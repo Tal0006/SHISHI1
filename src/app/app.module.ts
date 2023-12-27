@@ -9,6 +9,10 @@ import { PlayersByLevelComponent } from './comps/players-by-level/players-by-lev
 import { HttpClientModule } from '@angular/common/http';
 import { PlayerService } from './services/player.service';
 import { TeamService } from './services/team.service'
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { TeamService } from './services/team.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [
     PlayerService,

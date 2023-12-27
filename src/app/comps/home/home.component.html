@@ -1,18 +1,19 @@
-<input #inpName type="text" placeholder="שם">
-    <input #inpStars type="number" placeholder="כוכבים">
-    <button (click)="addPlayer(inpName.value, +inpStars.value)" type="button">הוסף</button>
+<input #inpName type="text" placeholder="שם" />
+<input #inpStars type="number" placeholder="כוכבים" />
+<button (click)="addPlayer(inpName.value, +inpStars.value)" type="button">
+  הוסף
+</button>
 
-    <button (click)="showTeams()">Players Data</button>
-    <button (click)="shuffleAgain()">ערבב</button>
-    <div *ngIf="!showTeamsComp && full20">
-        <tr *ngFor="let player of groupPlayersByStars(players)">
-            בחירה {{player[0].stars}}
-            <th style="border: 2px solid red;" *ngFor="let p of player">
-                <app-players-by-level [player]="p"></app-players-by-level>
-            </th>
-        </tr>
-    </div>
+<button (click)="showTeams()">חלק לקבוצות</button>
+<button (click)="shuffleAgain()">ערבב</button>
+<div *ngIf="showPlayersByLevel" class="levelPlayers">
+  <div class="levelPlayers2" *ngFor="let playersLevel of playersByLevel">
+    <app-players-by-level [players]="playersLevel"></app-players-by-level>
+  </div>
+</div>
 
-    <div *ngIf="showTeamsComp">
-        <app-teams [teams]="teams"></app-teams>
+<div *ngIf="showTeamsComp" class="teams">
+    <div class="teams2" *ngFor="let team_ of teams">
+      <app-teams [team]="team_"></app-teams>
     </div>
+  </div>

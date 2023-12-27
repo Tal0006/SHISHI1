@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { PlayerService } from 'src/app/services/player.service';
 import { Player } from 'src/app/types/player';
 
 @Component({
@@ -8,5 +9,29 @@ import { Player } from 'src/app/types/player';
 })
 export class PlayersByLevelComponent {
   @Input()
-  player!: Player;
+  players!: Player[];
+
+  constructor(private playerService: PlayerService) {}
+
+  deletePlayer(name: string): void {
+    this.playerService.deleteByName(name).subscribe(
+      () => {
+        // Remove the deleted player from the local array
+        const index = this.players.findIndex(player => player.name === name);
+        if (index !== -1) {
+          this.players.splice(index, 1);
+        }
+      },
+      (error) => {
+        console.error('Error deleting player:', error);
+      }
+    );
+  }
+
+  // deletePlayer(name: string)
+  // {
+  //   this.playerService.deleteByName(name).subscribe((data) => {
+  //     console.log(data)
+  //   })
+  // }
 }

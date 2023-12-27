@@ -27,6 +27,11 @@ export class PlayerService {
     return this.http.delete<any>(`${this.apiUrl}/remove/${id}`)
   }
 
+  deleteByName(name: string)
+  {
+    return this.http.delete<any>(`${this.apiUrl}/removeByCondition/${name}`)
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error);

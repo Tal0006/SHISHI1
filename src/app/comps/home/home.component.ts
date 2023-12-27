@@ -13,10 +13,12 @@ export class HomeComponent {
 
   constructor(private playerService: PlayerService, private teamService: TeamService) {}
 
-  players: Player[] =  []
-  teams: Team[] = []
+  players: Player[] = [];
+  teams: Team[] = [];
+  playersByLevel: Player[][] = [];
   showTeamsComp: boolean = false;
   full20: boolean = false;
+  showPlayersByLevel: boolean = true;
 
 
   ngOnInit()
@@ -31,37 +33,12 @@ export class HomeComponent {
         this.players.push(new Player(player.name, player.stars))
       })
 
-      this.initList()
+      this.playersByLevel = this.groupPlayersByStars(this.players)
+      console.log(this.playersByLevel)
     })
   }
 
-  getTeams()
-  {
-    this.teamService.getAllTeams().subscribe((data) => {
-      console.log(data)
-    })
-  }
-
-
-  createTeams()
-  {
-    this.teams.forEach((team) => {
-      this.createTeam(team, this.teamLeader(team));
-    })
-  }
-
-  createTeam(teamData: Team, teamLead: string){
-    console.log("Team ==> : ", teamData)
-    let bodyData = {
-      "name": teamLead,
-      "playersArray": teamData,
-      "numOfWins": 0
-    }
-
-    this.teamService.createTeam(bodyData).subscribe((data) => {
-      console.log("Team Data ===> : ", data)
-    })
-  }
+  
 
   addPlayer(name_: string, stars_: number) {
 
@@ -70,14 +47,10 @@ export class HomeComponent {
       "stars": stars_
     }
 
+    this.playersByLevel[stars_ - 1].push(new Player(name_, stars_))
     this.playerService.addPlayer(bodyData).subscribe((data) => {
       console.log(data)
     })
-  }
-
-  teamLeader(team: Team)
-  {
-    return team.playersArray.filter((player : Player) => player.stars === 5)[0].name
   }
 
   initList()
@@ -90,8 +63,6 @@ export class HomeComponent {
       }
       this.teams = this.dividTemp(pl)
       this.full20 = true;
-
-      this.createTeams();
   }
 
   shuffleAgain()
@@ -121,7 +92,9 @@ export class HomeComponent {
 
   showTeams()
   {
-    this.showTeamsComp = true
+    this.showPlayersByLevel = false;
+    this.showTeamsComp = true;
+    this.initList();
   }
 
   groupPlayersByStars(players: Player[]): Player[][] {
@@ -141,14 +114,13 @@ export class HomeComponent {
       // Push the player to the corresponding array based on stars
       groupedPlayers[index].push(player);
     });
-  
+
     return groupedPlayers;
   }
 
 
 
   dividTemp(players: Player[]): Team[] {
-    console.log("PLAyers=> : ", players)
     const teams: Team[] = [];
 
     for (let i = 1; i <= 4; i++) {
