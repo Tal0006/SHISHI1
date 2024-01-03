@@ -1,0 +1,10 @@
+<app-nav-bar></app-nav-bar>
+<input #inpName type="text" placeholder="שם:">
+<input #inpStars type="number" placeholder="רמה:">
+<button (click)="addPlayer(inpName.value, +inpStars.value)">Add Player</button>
+
+<div class="levelPlayers">
+    <div class="levelPlayers2" *ngFor="let playersLevel of playersByLevel">
+        <app-players-by-level [players]="playersLevel"></app-players-by-level>
+    </div>    
+</div>

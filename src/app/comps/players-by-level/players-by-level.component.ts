@@ -8,15 +8,14 @@ import { Player } from 'src/app/types/player';
   styleUrls: ['./players-by-level.component.css']
 })
 export class PlayersByLevelComponent {
-  @Input()
-  players!: Player[];
-
+  
   constructor(private playerService: PlayerService) {}
 
+  @Input() players: Player[] = []
+  
   deletePlayer(name: string): void {
     this.playerService.deleteByName(name).subscribe(
       () => {
-        // Remove the deleted player from the local array
         const index = this.players.findIndex(player => player.name === name);
         if (index !== -1) {
           this.players.splice(index, 1);
@@ -28,10 +27,6 @@ export class PlayersByLevelComponent {
     );
   }
 
-  // deletePlayer(name: string)
-  // {
-  //   this.playerService.deleteByName(name).subscribe((data) => {
-  //     console.log(data)
-  //   })
-  // }
+ 
+
 }

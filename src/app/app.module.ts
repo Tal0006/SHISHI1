@@ -10,7 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayerService } from './services/player.service';
 import { TeamService } from './services/team.service'
 import {MatIconModule} from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FixturesComponent } from './comps/fixtures/fixtures.component'
+import { FixtureService } from './services/fixture.service';
+import { NavBarComponent } from './comps/nav-bar/nav-bar.component';
+import { PlayersComponent } from './comps/players/players.component'
 
 
 
@@ -19,7 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     AppComponent,
     HomeComponent,
     TeamsComponent,
-    PlayersByLevelComponent
+    PlayersByLevelComponent,
+    FixturesComponent,
+    NavBarComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   ],
   providers: [
     PlayerService,
-    TeamService
+    TeamService,
+    FixtureService
   ],
   bootstrap: [AppComponent]
 })

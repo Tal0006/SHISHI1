@@ -1,19 +1,21 @@
-<input #inpName type="text" placeholder="שם" />
-<input #inpStars type="number" placeholder="כוכבים" />
-<button (click)="addPlayer(inpName.value, +inpStars.value)" type="button">
-  הוסף
-</button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
 
-<button (click)="showTeams()">חלק לקבוצות</button>
-<button (click)="shuffleAgain()">ערבב</button>
-<div *ngIf="showPlayersByLevel" class="levelPlayers">
-  <div class="levelPlayers2" *ngFor="let playersLevel of playersByLevel">
-    <app-players-by-level [players]="playersLevel"></app-players-by-level>
-  </div>
-</div>
+    <app-nav-bar></app-nav-bar>
 
-<div *ngIf="showTeamsComp" class="teams">
-    <div class="teams2" *ngFor="let team_ of teams">
-      <app-teams [team]="team_"></app-teams>
-    </div>
-  </div>
+    <section>
+      <!-- Your home page content goes here -->
+      <h2>Welcome to the Home Page!</h2>
+      <p>
+        This is a simple and beautiful layout for your Angular project's home
+        page.
+      </p>
+    </section>
+  </body>
+</html>
