@@ -35,20 +35,6 @@ th {
 }
 
 /* Styling for the Teams component */
-.app-teams {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.team {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #f8f8f8;
-}
-
 h2 {
   color: #333;
 }
@@ -79,15 +65,5 @@ li:hover {
 
 .levelPlayers2 {
   width: 380px;
-  height: 800px;
-}
-
-.teams {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.teams2 {
-  width: 479px;
   height: 800px;
 }

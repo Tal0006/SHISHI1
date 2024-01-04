@@ -10,6 +10,7 @@ import { PlayersComponent } from './comps/players/players.component'
 const routes : Routes = [
     {path : '', component: HomeComponent},
     {path : 'players', component: PlayersComponent},
+    {path : 'teams', component: TeamsComponent},
     {path : 'fixtures', component: FixturesComponent},
 ]
 

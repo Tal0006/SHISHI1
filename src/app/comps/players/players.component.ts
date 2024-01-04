@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { PlayerService } from 'src/app/services/player.service';
 import { Player } from 'src/app/types/player';
@@ -9,9 +10,9 @@ import { Player } from 'src/app/types/player';
 })
 export class PlayersComponent {
 
-  playersByLevel: Player[][] = [[], [], [], [], []];
+  playersByLevel: Player[][] = [[], [], [], [], [], []];
 
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService, private router: Router) {}
 
   ngOnInit() {
     this.getAllPlayers()
@@ -37,6 +38,10 @@ export class PlayersComponent {
     this.playerService.addPlayer(bodyData).subscribe((data) => {
       console.log(data)
     })
+  }
+
+  moveToTeamsPage() {
+    this.router.navigate(['/teams'])
   }
 
 }
