@@ -1,3 +1,4 @@
+import { FixtureService } from 'src/app/services/fixture.service';
 import { Component } from '@angular/core';
 import { Team } from 'src/app/types/team';
 import { ActivatedRoute } from '@angular/router';
@@ -12,14 +13,24 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class TeamsComponent {
 
-  constructor(private playerService: PlayerService, private teamService: TeamService, private route: ActivatedRoute) { }
+  constructor(private playerService: PlayerService, private teamService: TeamService, private route: ActivatedRoute,
+    private fixtureService: FixtureService) { }
 
   teams: Team[] = [];
 
   players: Player[] = []
 
   ngOnInit() {
-    this.getAllPlayers()
+    this.getAllTeams()
+  }
+
+
+  getAllTeams() {
+    this.teamService.getAllTeams().subscribe((data1 : any) => {
+      data1.data.map((team: Team) => {
+        this.teams.push(new Team(team.name, team.playersArray, team.numOfWins))
+      })
+    })
   }
 
   getAllPlayers() {
@@ -84,8 +95,21 @@ export class TeamsComponent {
     return teams;
   }
 
-  teamLeader(team: Team)
-  {
+
+  deleteTeam(teamName: string) {
+    this.teamService.deleteTeam(teamName).subscribe(() => {
+      const index = this.teams.findIndex(team => team.name === teamName);
+      if (index !== -1) {
+        this.teams.splice(index, 1);
+      }
+    },
+    (error) => {
+      console.error('Error deleting team:', error);
+    }
+  );
+  }
+
+  teamLeader(team: Team) {
     return team.playersArray.filter((player : Player) => player.stars === 5)[0].name
   }
 
@@ -118,8 +142,16 @@ export class TeamsComponent {
   }
 
 
-  createFixture() {
-    console.log(this.teams)
+  createFixture(matchDay: number, date: string) {
+    let body = {
+      "matchDay": matchDay,
+      "teamArray": this.teams,
+      "date": date
+    }
+
+    this.fixtureService.addFixture(body).subscribe((data) => {
+      console.log(data);
+    })
   }
 
 }

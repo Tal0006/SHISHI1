@@ -22,14 +22,21 @@ export class TeamService {
           );
     }
 
+    getTeamByID(id: string) {
+        return this.http.get(`${this.apiUrl}/${id}`)
+    }
+
     getPlayersNames(team: Team) :Observable<any[]>
     {
-        console.log(team)
         return this.http.get<any[]>(`${this.apiUrl}/getPlayers/${team.name}`)
     }
 
     createTeam(bodyData: any): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/create`, bodyData)
+    }
+
+    deleteTeam(name: string) {
+        return this.http.delete(`${this.apiUrl}/deleteByCondition/${name}`)
     }
 
     private handleError(error: HttpErrorResponse) {

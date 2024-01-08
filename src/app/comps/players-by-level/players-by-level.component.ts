@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PlayerService } from 'src/app/services/player.service';
 import { Player } from 'src/app/types/player';
 
@@ -8,11 +8,11 @@ import { Player } from 'src/app/types/player';
   styleUrls: ['./players-by-level.component.css']
 })
 export class PlayersByLevelComponent {
-  
-  constructor(private playerService: PlayerService) {}
+
+  constructor(private playerService: PlayerService) { }
 
   @Input() players: Player[] = []
-  
+
   deletePlayer(name: string): void {
     this.playerService.deleteByName(name).subscribe(
       () => {
@@ -27,6 +27,12 @@ export class PlayersByLevelComponent {
     );
   }
 
- 
+  returnPlayerStars(players: Player[]) {
+    if(players[0]) {
+      return players[0].stars
+    }
+
+    return 0;
+  }
 
 }

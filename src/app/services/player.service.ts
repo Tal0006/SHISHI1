@@ -18,6 +18,9 @@ export class PlayerService {
       );
   }
 
+  getPlayer(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`)
+  }
 
   addPlayer(bodyData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/create`, bodyData)

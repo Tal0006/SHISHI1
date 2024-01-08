@@ -1,1 +1,38 @@
 <app-nav-bar></app-nav-bar>
+
+<div style="text-align: center;">
+  <h1>מחזורים</h1>
+</div>
+
+<div style="direction: rtl;">
+  <table *ngFor="let fixture of fixtures" class="fixture-table">
+    <thead>
+      <tr>
+        <th colspan="3">
+          <h3>מחזור מספר {{ fixture.matchDay }}</h3>
+          <h5>תאריך {{ fixture.date | parseDate | date: 'dd/MM/yyyy' }}</h5>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <div class="teams">
+            <div class="teams2" *ngFor="let team_ of teams">
+              <div class="table-title">
+                <h3 style="color: red">{{ team_.name }}
+                  <!-- <mat-icon (click)="deleteTeam(teamLeader(team_))"  class="delete-icon">delete</mat-icon> -->
+                </h3>
+              </div>
+              <table class="table-fill">
+                <tbody class="table-hover">
+                  <tr style="border: 3px solid black" *ngFor="let player of team_.playersArray">
+                    <td>
+                      <span class="name-span">{{ player.name }} </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </tbody>
+  </table>
+</div>

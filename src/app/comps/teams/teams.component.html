@@ -3,23 +3,21 @@
   <button (click)="shuffleAgain()">ערבב</button>
 </div>
 <div dir="rtl">
-    <input #matchDay type="number" placeholder="הכנס מספר מחזור">
-    <input #date type="string" placeholder="הכנס תאריך"> 
-    <button (click)="createTeams()">צור מחזור</button>
+  <input #matchDay type="number" placeholder="הכנס מספר מחזור" />
+  <input #date type="string" placeholder="הכנס תאריך" />
+  <button (click)="createFixture(+matchDay.value, date.value)">צור מחזור</button>
 </div>
 <div class="teams">
   <div class="teams2" *ngFor="let team_ of teams">
     <div class="table-title">
-      <h3 style="color: red">הקבוצה של : {{ teamLeader(team_) }}</h3>
+      <h3 style="color: red">{{ teamLeader(team_) }}
+        <mat-icon (click)="deleteTeam(teamLeader(team_))"  class="delete-icon">delete</mat-icon>
+      </h3>
     </div>
     <table class="table-fill">
       <tbody class="table-hover">
-        <tr
-          style="border: 3px solid black"
-          *ngFor="let player of team_.playersArray"
-        >
+        <tr style="border: 3px solid black" *ngFor="let player of team_.playersArray">
           <td>
-            <!-- <mat-icon (click)="deletePlayer(player.name)"  class="delete-icon">delete</mat-icon> -->
             <span class="name-span">{{ player.name }} </span>
           </td>
         </tr>
@@ -27,4 +25,3 @@
     </table>
   </div>
 </div>
-

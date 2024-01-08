@@ -15,7 +15,7 @@ import { FixturesComponent } from './comps/fixtures/fixtures.component'
 import { FixtureService } from './services/fixture.service';
 import { NavBarComponent } from './comps/nav-bar/nav-bar.component';
 import { PlayersComponent } from './comps/players/players.component'
-
+import { ParseDatePipe } from './comps/parse-date-pipe'
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { PlayersComponent } from './comps/players/players.component'
     PlayersByLevelComponent,
     FixturesComponent,
     NavBarComponent,
-    PlayersComponent
+    PlayersComponent,
+    ParseDatePipe
   ],
   imports: [
     BrowserModule,
